@@ -24,6 +24,6 @@ main(void)
   TenSore::Matrix<int> M({ 10, 10 });
   TenSore::Matrix<int> M1 = M;
   for (auto it : M) {
-    std::cout << "Nigger";
+    std::cout << "Element";
   }
 }
