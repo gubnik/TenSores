@@ -20,7 +20,6 @@
 #include <algorithm>
 #include <functional>
 #include <iostream>
-#include <utility>
 
 int
 main(void)
@@ -34,31 +33,25 @@ main(void)
 
   std::cout << M << '\n';
 
-  std::vector<std::vector<int>> _rows (M.dimensions()[0]);
+  std::vector<std::vector<int>> _rows(M.dimensions()[0]);
 
-  for (std::size_t j = 0; j < M.dimensions()[1]; j++)
-  {
-    for (std::size_t i = 0; i < M.dimensions()[0]; i++)
-    {
-      _rows[i].push_back(M({j, i}));
+  for (std::size_t j = 0; j < M.dimensions()[1]; j++) {
+    for (std::size_t i = 0; i < M.dimensions()[0]; i++) {
+      _rows[i].push_back(M({ j, i }));
     }
   }
 
-  for (std::size_t i = 0; i < _rows.size(); i++)
-  {
+  for (std::size_t i = 0; i < _rows.size(); i++) {
     if (i % 2) {
       std::sort(_rows[i].begin(), _rows[i].end(), std::greater<int>());
-    }
-    else {
+    } else {
       std::sort(_rows[i].begin(), _rows[i].end(), std::less<int>());
     }
   }
 
-  for (std::size_t j = 0; j < M.dimensions()[1]; j++)
-  {
-    for (std::size_t i = 0; i < M.dimensions()[0]; i++)
-    {
-      M({j, i}) = _rows[i][j];
+  for (std::size_t j = 0; j < M.dimensions()[1]; j++) {
+    for (std::size_t i = 0; i < M.dimensions()[0]; i++) {
+      M({ M.dimensions()[1] - i - 1, M.dimensions()[0] - j - 1 }) = _rows[i][j];
     }
   }
 
