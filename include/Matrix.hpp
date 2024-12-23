@@ -18,6 +18,8 @@
 #pragma once
 
 #include "Tensor.hpp"
+#include <iomanip>
+#include <iostream>
 
 namespace TenSore {
 
@@ -26,5 +28,22 @@ namespace TenSore {
  */
 template<typename T>
 using Matrix = Tensor<T, 2>;
+
+template<typename T>
+std::ostream&
+operator<<(std::ostream& out, Matrix<T>& M)
+{
+  const std::size_t _rows = M.dimensions()[0];
+  std::size_t _c = 0;
+  for (const T& it : M)
+  {
+    std::cout << std::setw(2) << it << ' ';
+    if (_c++ % _rows == _rows - 1)
+    {
+       std::cout << std::endl;
+    }
+  }
+  return out;
+}
 
 }

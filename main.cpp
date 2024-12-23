@@ -17,13 +17,52 @@
  */
 
 #include "include/Matrix.hpp"
+#include <algorithm>
+#include <functional>
 #include <iostream>
+#include <utility>
+
 int
 main(void)
 {
   TenSore::Matrix<int> M({ 10, 10 });
   TenSore::Matrix<int> M1 = M;
-  for (auto it : M) {
-    std::cout << "Element";
+
+  for (std::size_t i = 0; i < M.size(); i++) {
+    M[i] = i;
   }
+
+  std::cout << M << '\n';
+
+  std::vector<std::vector<int>> _rows (M.dimensions()[0]);
+
+  for (std::size_t j = 0; j < M.dimensions()[1]; j++)
+  {
+    for (std::size_t i = 0; i < M.dimensions()[0]; i++)
+    {
+      _rows[i].push_back(M({j, i}));
+    }
+  }
+
+  for (std::size_t i = 0; i < _rows.size(); i++)
+  {
+    if (i % 2) {
+      std::sort(_rows[i].begin(), _rows[i].end(), std::greater<int>());
+    }
+    else {
+      std::sort(_rows[i].begin(), _rows[i].end(), std::less<int>());
+    }
+  }
+
+  for (std::size_t j = 0; j < M.dimensions()[1]; j++)
+  {
+    for (std::size_t i = 0; i < M.dimensions()[0]; i++)
+    {
+      M({j, i}) = _rows[i][j];
+    }
+  }
+
+  std::cout << '\n';
+
+  std::cout << M << '\n';
 }

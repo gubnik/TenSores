@@ -50,6 +50,8 @@ class Tensor //: public std::enable_shared_from_this<Tensor<T, Order, A>>
 public:
   class Iterator;
 
+  using iterator = Iterator;
+
   Tensor() = delete;
 
   ~Tensor() = default;
@@ -171,6 +173,16 @@ public:
     return _retval;
   }
 
+  const std::vector<T> data() const noexcept
+  {
+    return m_Data;
+  }
+
+  const std::array<std::size_t, Order>& dimensions() const noexcept
+  {
+    return m_DimensionsData;
+  }
+
   /**
    * @brief Accessor for m_Mutex
    *
@@ -202,7 +214,7 @@ public:
    */
   T& at(const std::array<std::size_t, Order>& dims)
   {
-    std::lock_guard<std::shared_mutex> lock(mutex());
+    //std::lock_guard<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
     return m_Data[index];
   }
@@ -216,7 +228,7 @@ public:
    */
   const T& at(const std::array<std::size_t, Order>& dims) const
   {
-    std::lock_guard<std::shared_mutex> lock(mutex());
+    //std::lock_guard<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
     return m_Data[index];
   }
@@ -235,7 +247,7 @@ public:
     static_assert(sizeof...(p_Dimensions) == Order,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    std::lock_guard<std::shared_mutex> lock(mutex());
+    //std::lock_guard<std::shared_mutex> lock(mutex());
     const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
@@ -254,7 +266,7 @@ public:
     static_assert(sizeof...(p_Dimensions) == Order,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    std::lock_guard<std::shared_mutex> lock(mutex());
+    //std::lock_guard<std::shared_mutex> lock(mutex());
     const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
@@ -431,6 +443,16 @@ public:
     {
     }
 
+    std::size_t index() const noexcept
+    {
+      return m_Index;
+    }
+
+    const Tensor<T, Order>& tensor() const noexcept
+    {
+      return *m_TensorPtr;
+    }
+
     void test_for_invalidation()
     {
       if (m_TensorPtr->m_Version != m_Version) {
@@ -446,6 +468,18 @@ public:
     reference operator*()
     {
       test_for_invalidation();
+      if (!m_TensorPtr)
+        throw std::runtime_error("Tensor has been destroyed");
+      return (*m_TensorPtr)[m_Index];
+    }
+    
+    /**
+     * @brief Dereference operator to access the element
+     *
+     * @return Element to which the iterator points
+     */
+    const T& operator*() const
+    {
       if (!m_TensorPtr)
         throw std::runtime_error("Tensor has been destroyed");
       return (*m_TensorPtr)[m_Index];
