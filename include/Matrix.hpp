@@ -18,26 +18,29 @@
 #pragma once
 
 #include "Tensor.hpp"
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
+#include <cmath>
 
 namespace TenSore {
 
 /**
  * @brief Matrix definition
  */
-template<typename T>
+template<std::integral T>
 using Matrix = Tensor<T, 2>;
 
 template<typename T>
 std::ostream&
 operator<<(std::ostream& out, const Matrix<T>& M)
 {
+  const auto _mlen = 1 + std::log10(*std::max_element(M.begin(), M.end()));
   const std::size_t _rows = M.dimensions()[0];
   std::size_t _c = 0;
   for (const T& it : M)
   {
-    std::cout << std::setw(2) << it << ' ';
+    std::cout << std::setw(_mlen) << it << ' ';
     if (_c++ % _rows == _rows - 1)
     {
        std::cout << std::endl;
