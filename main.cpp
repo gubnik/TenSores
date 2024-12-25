@@ -18,26 +18,24 @@
 
 #include "include/Matrix.hpp"
 #include <algorithm>
-#include <functional>
 #include <iostream>
+#include <numeric>
+#include <ostream>
 
 int
 main(void)
 {
   TenSore::Matrix<int> M({ 10, 10 });
-  TenSore::Matrix<int> M1 = M;
 
-  for (std::size_t i = 0; i < M.size(); i++) {
-    M[i] = i;
-  }
+  std::iota(M.begin(), M.end(), 0);
 
   std::cout << M << '\n';
 
-  std::vector<std::vector<int>> _rows(M.dimensions()[0]);
+  std::array<std::array<int, 10>, 10> _rows;
 
   for (std::size_t j = 0; j < M.dimensions()[1]; j++) {
     for (std::size_t i = 0; i < M.dimensions()[0]; i++) {
-      _rows[i].push_back(M({ j, i }));
+      _rows[i][j] = M({ j, i });
     }
   }
 

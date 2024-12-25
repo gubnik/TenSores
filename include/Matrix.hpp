@@ -31,7 +31,7 @@ using Matrix = Tensor<T, 2>;
 
 template<typename T>
 std::ostream&
-operator<<(std::ostream& out, Matrix<T>& M)
+operator<<(std::ostream& out, const Matrix<T>& M)
 {
   const std::size_t _rows = M.dimensions()[0];
   std::size_t _c = 0;

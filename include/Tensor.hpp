@@ -15,11 +15,12 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#pragma once 
+#pragma once
 
 #include "AllocatorConcept.hpp"
 #include <array>
 #include <cstddef>
+#include <functional>
 #include <iterator>
 #include <memory>
 
@@ -49,8 +50,7 @@ class Tensor //: public std::enable_shared_from_this<Tensor<T, Order, A>>
 
 public:
   class Iterator;
-
-  using iterator = Iterator;
+  class ConstIterator;
 
   Tensor() = delete;
 
@@ -173,10 +173,7 @@ public:
     return _retval;
   }
 
-  const std::vector<T> data() const noexcept
-  {
-    return m_Data;
-  }
+  const std::vector<T> data() const noexcept { return m_Data; }
 
   const std::array<std::size_t, Order>& dimensions() const noexcept
   {
@@ -206,6 +203,21 @@ public:
   }
 
   /**
+   * @brief Const element access operator
+   *
+   * @param N Global index to access
+   *
+   * @return Cosnt element at index
+   */
+  const T& operator[](std::size_t N) const
+  {
+    if (N > size()) {
+      throw std::out_of_range("Accessed an element outside of tensor's size");
+    }
+    return m_Data[N];
+  }
+
+  /**
    * @brief Element access with calculated index
    *
    * @param p_Dimensions Dimension coordinates to access.
@@ -214,7 +226,7 @@ public:
    */
   T& at(const std::array<std::size_t, Order>& dims)
   {
-    //std::lock_guard<std::shared_mutex> lock(mutex());
+    // std::lock_guard<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
     return m_Data[index];
   }
@@ -228,7 +240,7 @@ public:
    */
   const T& at(const std::array<std::size_t, Order>& dims) const
   {
-    //std::lock_guard<std::shared_mutex> lock(mutex());
+    // std::lock_guard<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
     return m_Data[index];
   }
@@ -247,7 +259,7 @@ public:
     static_assert(sizeof...(p_Dimensions) == Order,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    //std::lock_guard<std::shared_mutex> lock(mutex());
+    // std::lock_guard<std::shared_mutex> lock(mutex());
     const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
@@ -266,7 +278,7 @@ public:
     static_assert(sizeof...(p_Dimensions) == Order,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    //std::lock_guard<std::shared_mutex> lock(mutex());
+    // std::lock_guard<std::shared_mutex> lock(mutex());
     const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
@@ -303,6 +315,13 @@ public:
   Iterator begin() { return Iterator(this, 0, m_Version); }
 
   /**
+   * @brief Const iterator to the first element
+   *
+   * @return Const iterator to the first element
+   */
+  ConstIterator begin() const noexcept { return ConstIterator(this, 0, m_Version); }
+
+  /**
    * @brief Iterator to the last element
    *
    * @return Iterator to the last element
@@ -310,18 +329,31 @@ public:
   Iterator end() { return Iterator(this, size(), m_Version); }
 
   /**
+   * @brief Const iterator to the last element
+   *
+   * @return Const iterator to the last element
+   */
+  ConstIterator end() const noexcept { return ConstIterator(this, size(), m_Version); }
+
+  /**
    * @brief Constant iterator to first element
    *
    * @return Constant iterator to the first element
    */
-  const Iterator cbegin() const { return Iterator(this, 0, m_Version); }
+  const ConstIterator cbegin() const noexcept
+  {
+    return ConstIterator(this, 0, m_Version);
+  }
 
   /**
    * @brief Constant iterator to last element
    *
    * @return Constant iterator to the last element
    */
-  const Iterator cend() const { return Iterator(this, size(), m_Version); }
+  const ConstIterator cend() const noexcept
+  {
+    return ConstIterator(this, size(), m_Version);
+  }
 
   /**
    * @brief Reverse iterator to the first element
@@ -331,6 +363,13 @@ public:
   Iterator rbegin() { return std::reverse_iterator<Iterator>(begin()); }
 
   /**
+   * @brief Const reverse iterator to the first element
+   *
+   * @return Const reverse iterator to the first element
+   */
+  ConstIterator rbegin() const noexcept { return std::reverse_iterator<ConstIterator>(begin()); }
+
+  /**
    * @brief Reverse iterator to the last element
    *
    * @return Reverse iterator to the last element
@@ -338,14 +377,20 @@ public:
   Iterator rend() { return std::reverse_iterator<Iterator>(end()); }
 
   /**
+   * @brief Const reverse iterator to the last element
+   *
+   * @return Const reverse iterator to the last element
+   */
+  ConstIterator rend() const noexcept { return std::reverse_iterator<ConstIterator>(end()); }
+
+  /**
    * @brief Constant reverse iterator to the last element
    *
    * @return Constant reverse iterator to the last element
    */
-  const Iterator crbegin() const
+  const ConstIterator crbegin() const
   {
-    std::lock_guard<std::shared_mutex> lock(mutex());
-    return std::reverse_iterator<Iterator>(begin());
+    return std::reverse_iterator<ConstIterator>(begin());
   }
 
   /**
@@ -353,10 +398,9 @@ public:
    *
    * @return Constant reverse iterator to the last element
    */
-  const Iterator crend() const
+  const ConstIterator crend() const
   {
-    std::lock_guard<std::shared_mutex> lock(mutex());
-    return std::reverse_iterator<Iterator>(end());
+    return std::reverse_iterator<ConstIterator>(end());
   }
 
 private:
@@ -443,15 +487,9 @@ public:
     {
     }
 
-    std::size_t index() const noexcept
-    {
-      return m_Index;
-    }
+    std::size_t index() const noexcept { return m_Index; }
 
-    const Tensor<T, Order>& tensor() const noexcept
-    {
-      return *m_TensorPtr;
-    }
+    const Tensor<T, Order>& tensor() const noexcept { return *m_TensorPtr; }
 
     void test_for_invalidation()
     {
@@ -472,7 +510,7 @@ public:
         throw std::runtime_error("Tensor has been destroyed");
       return (*m_TensorPtr)[m_Index];
     }
-    
+
     /**
      * @brief Dereference operator to access the element
      *
@@ -574,6 +612,153 @@ public:
 
   private:
     Tensor* m_TensorPtr;
+    std::size_t m_Index;
+    std::size_t m_Version;
+  };
+
+  class ConstIterator
+  {
+  public:
+    using iterator_category = std::random_access_iterator_tag;
+    using value_type = T;
+    using difference_type = std::ptrdiff_t;
+    using pointer = const T*;
+    using reference = const T&;
+
+    ConstIterator() = delete;
+
+    /**
+     * @brief Constructor of tensor
+     *
+     * @param p_Tensor Raw pointer to a tensor
+     * @param p_Idx Index of an element at which this iterator points
+     * @param p_Version Version of a tensor
+     */
+    ConstIterator(const Tensor* p_Tensor,
+                  std::size_t p_Idx,
+                  std::size_t p_Version)
+      : m_TensorPtr(p_Tensor)
+      , m_Index(p_Idx)
+      , m_Version(p_Version)
+    {
+    }
+
+    std::size_t index() const noexcept { return m_Index; }
+
+    const Tensor<T, Order>& tensor() const noexcept { return *m_TensorPtr; }
+
+    void test_for_invalidation()
+    {
+      if (m_TensorPtr->m_Version != m_Version) {
+        throw std::runtime_error("ConstIterator to a censor was invalidated");
+      }
+    }
+
+    /**
+     * @brief Dereference operator to access the element
+     *
+     * @return Element to which the iterator points
+     */
+    reference operator*() const
+    {
+      if (!m_TensorPtr)
+        throw std::runtime_error("Tensor has been destroyed");
+      return (m_TensorPtr)->operator[](m_Index);
+    }
+
+    /**
+     * @brief Pointer to the element at which the iterator is pointing to
+     *
+     * @return Pointer to the element at which the iterator is pointing to
+     */
+    pointer operator->() const
+    {
+      test_for_invalidation();
+      return &(**this);
+    }
+
+    ConstIterator& operator++()
+    {
+      ++m_Index;
+      return *this;
+    }
+
+    ConstIterator operator++(int)
+    {
+      ConstIterator temp = *this;
+      ++(*this);
+      return temp;
+    }
+
+    ConstIterator& operator+=(difference_type n)
+    {
+      m_Index += n;
+      return *this;
+    }
+
+    ConstIterator operator+(difference_type n) const
+    {
+      ConstIterator temp = *this;
+      temp += n;
+      return temp;
+    }
+
+    friend ConstIterator operator+(difference_type n, const ConstIterator& it)
+    {
+      return it + n;
+    }
+
+    ConstIterator& operator--()
+    {
+      --m_Index;
+      return *this;
+    }
+
+    ConstIterator operator--(int)
+    {
+      ConstIterator temp = *this;
+      --(*this);
+      return temp;
+    }
+
+    ConstIterator& operator-=(difference_type n)
+    {
+      m_Index -= n;
+      return *this;
+    }
+
+    ConstIterator operator-(difference_type n) const
+    {
+      ConstIterator temp = *this;
+      temp -= n;
+      return temp;
+    }
+
+    difference_type operator-(const ConstIterator& other) const
+    {
+      return m_Index - other.m_Index;
+    }
+
+    reference operator[](difference_type n) const 
+    {
+      test_for_invalidation();
+      return *(*this + n);
+    }
+
+    bool operator==(const ConstIterator& other) const
+    {
+      return m_Index == other.m_Index;
+    }
+
+    bool operator!=(const ConstIterator& other) const
+    {
+      return !(*this == other);
+    }
+
+    auto operator<=>(const ConstIterator& other) const = default;
+
+  private:
+    const Tensor* m_TensorPtr;
     std::size_t m_Index;
     std::size_t m_Version;
   };
