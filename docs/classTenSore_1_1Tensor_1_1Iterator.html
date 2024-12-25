@@ -125,12 +125,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f0704ef816aa6d67c2d97e9565d961b" id="r_a1f0704ef816aa6d67c2d97e9565d961b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f0704ef816aa6d67c2d97e9565d961b">Iterator</a> (<a class="el" href="classTenSore_1_1Tensor.html">Tensor</a> *p_Tensor, std::size_t p_Idx, std::size_t p_Version)</td></tr>
 <tr class="memdesc:a1f0704ef816aa6d67c2d97e9565d961b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of tensor.  <br /></td></tr>
 <tr class="separator:a1f0704ef816aa6d67c2d97e9565d961b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18cecf178dde592539e0dae457e614bc" id="r_a18cecf178dde592539e0dae457e614bc"><td class="memItemLeft" align="right" valign="top"><a id="a18cecf178dde592539e0dae457e614bc" name="a18cecf178dde592539e0dae457e614bc"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>index</b> () const noexcept</td></tr>
+<tr class="separator:a18cecf178dde592539e0dae457e614bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f841db67c755e8688c2ab28726365ee" id="r_a8f841db67c755e8688c2ab28726365ee"><td class="memItemLeft" align="right" valign="top"><a id="a8f841db67c755e8688c2ab28726365ee" name="a8f841db67c755e8688c2ab28726365ee"></a>
+const <a class="el" href="classTenSore_1_1Tensor.html">Tensor</a>&lt; T, Order &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>tensor</b> () const noexcept</td></tr>
+<tr class="separator:a8f841db67c755e8688c2ab28726365ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af05fd985488577d72adb31d60331fd9c" id="r_af05fd985488577d72adb31d60331fd9c"><td class="memItemLeft" align="right" valign="top"><a id="af05fd985488577d72adb31d60331fd9c" name="af05fd985488577d72adb31d60331fd9c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>test_for_invalidation</b> ()</td></tr>
 <tr class="separator:af05fd985488577d72adb31d60331fd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac67a00a788543ea63d5feefedadc4077" id="r_ac67a00a788543ea63d5feefedadc4077"><td class="memItemLeft" align="right" valign="top">reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac67a00a788543ea63d5feefedadc4077">operator*</a> ()</td></tr>
 <tr class="memdesc:ac67a00a788543ea63d5feefedadc4077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to access the element.  <br /></td></tr>
 <tr class="separator:ac67a00a788543ea63d5feefedadc4077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6326b134df5b2e9707e1ab3d0fbc24" id="r_a3d6326b134df5b2e9707e1ab3d0fbc24"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6326b134df5b2e9707e1ab3d0fbc24">operator*</a> () const</td></tr>
+<tr class="memdesc:a3d6326b134df5b2e9707e1ab3d0fbc24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to access the element.  <br /></td></tr>
+<tr class="separator:a3d6326b134df5b2e9707e1ab3d0fbc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cdcdbe16e91e36017aa0a640812141a" id="r_a8cdcdbe16e91e36017aa0a640812141a"><td class="memItemLeft" align="right" valign="top">pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cdcdbe16e91e36017aa0a640812141a">operator-&gt;</a> ()</td></tr>
 <tr class="memdesc:a8cdcdbe16e91e36017aa0a640812141a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the element at which the iterator is pointing to.  <br /></td></tr>
 <tr class="separator:a8cdcdbe16e91e36017aa0a640812141a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,7 +242,7 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac67a00a788543ea63d5feefedadc4077" name="ac67a00a788543ea63d5feefedadc4077"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac67a00a788543ea63d5feefedadc4077">&#9670;&#160;</a></span>operator*()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67a00a788543ea63d5feefedadc4077">&#9670;&#160;</a></span>operator*() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,6 +257,36 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dereference operator to access the element. </p>
+<dl class="section return"><dt>Returns</dt><dd>Element to which the iterator points </dd></dl>
+
+</div>
+</div>
+<a id="a3d6326b134df5b2e9707e1ab3d0fbc24" name="a3d6326b134df5b2e9707e1ab3d0fbc24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d6326b134df5b2e9707e1ab3d0fbc24">&#9670;&#160;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T &amp; <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Order, A &gt;::Iterator::operator* </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>

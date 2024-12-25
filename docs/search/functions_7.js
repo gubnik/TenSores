@@ -1,8 +1,8 @@
 var searchData=
 [
   ['operator_28_29_0',['operator()',['../classTenSore_1_1Tensor.html#a3563516f1c70769369c40c68e09e590c',1,'TenSore::Tensor::operator()()'],['../classTenSore_1_1Tensor.html#a63e4c50d42491c9263f2bf382f758e94',1,'TenSore::Tensor::operator()() const'],['../classTenSore_1_1Tensor.html#ad272a630bc87f60cb6ddacbc616080d5',1,'TenSore::Tensor::operator()(const std::array&lt; std::size_t, Order &gt; &amp;p_Dims)'],['../classTenSore_1_1Tensor.html#a436e3a1a64efdfb4e3a9b7f8e7cfcb8e',1,'TenSore::Tensor::operator()(const std::array&lt; std::size_t, Order &gt; &amp;p_Dims) const']]],
-  ['operator_2a_1',['operator*',['../classTenSore_1_1Tensor_1_1Iterator.html#ac67a00a788543ea63d5feefedadc4077',1,'TenSore::Tensor::Iterator']]],
-  ['operator_2d_3e_2',['operator-&gt;',['../classTenSore_1_1Tensor_1_1Iterator.html#a8cdcdbe16e91e36017aa0a640812141a',1,'TenSore::Tensor::Iterator']]],
+  ['operator_2a_1',['operator*',['../classTenSore_1_1Tensor_1_1Iterator.html#ac67a00a788543ea63d5feefedadc4077',1,'TenSore::Tensor::Iterator::operator*()'],['../classTenSore_1_1Tensor_1_1Iterator.html#a3d6326b134df5b2e9707e1ab3d0fbc24',1,'TenSore::Tensor::Iterator::operator*() const'],['../classTenSore_1_1Tensor_1_1ConstIterator.html#a6de07a51b5acec52a3b354345f122d37',1,'TenSore::Tensor::ConstIterator::operator*()']]],
+  ['operator_2d_3e_2',['operator-&gt;',['../classTenSore_1_1Tensor_1_1Iterator.html#a8cdcdbe16e91e36017aa0a640812141a',1,'TenSore::Tensor::Iterator::operator-&gt;()'],['../classTenSore_1_1Tensor_1_1ConstIterator.html#af0bbde0f5a099162d2d903ad580a32d4',1,'TenSore::Tensor::ConstIterator::operator-&gt;()']]],
   ['operator_3d_3',['operator=',['../classTenSore_1_1Tensor.html#a66dc7349cd5f0c13be9a708aa8d0f5a3',1,'TenSore::Tensor::operator=(const Tensor &amp;p_Other)'],['../classTenSore_1_1Tensor.html#a3fee5f5a3244871b25160ca8d7b67e2f',1,'TenSore::Tensor::operator=(Tensor &amp;&amp;p_Other) noexcept']]],
-  ['operator_5b_5d_4',['operator[]',['../classTenSore_1_1Tensor.html#ae787752df713e3bcc6611487aa2cef51',1,'TenSore::Tensor']]]
+  ['operator_5b_5d_4',['operator[]',['../classTenSore_1_1Tensor.html#ae787752df713e3bcc6611487aa2cef51',1,'TenSore::Tensor::operator[](std::size_t N)'],['../classTenSore_1_1Tensor.html#a8b017268dfedb9b2daca93994c728f54',1,'TenSore::Tensor::operator[](std::size_t N) const']]]
 ];

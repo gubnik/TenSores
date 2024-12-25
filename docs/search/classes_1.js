@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tensor_0',['Tensor',['../classTenSore_1_1Tensor.html',1,'TenSore']]]
+  ['iterator_0',['Iterator',['../classTenSore_1_1Tensor_1_1Iterator.html',1,'TenSore::Tensor']]]
 ];
