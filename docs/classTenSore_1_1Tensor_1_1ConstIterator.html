@@ -96,6 +96,11 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">TenSore::Tensor&lt; T, Order, A &gt;::ConstIterator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Const iterator class of <a class="el" href="classTenSore_1_1Tensor.html" title="Mathematical tensor type.">Tensor</a>.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Tensor_8hpp_source.html">Tensor.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -133,7 +138,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>test_for_invalidation
 <tr class="memdesc:a6de07a51b5acec52a3b354345f122d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to access the element.  <br /></td></tr>
 <tr class="separator:a6de07a51b5acec52a3b354345f122d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0bbde0f5a099162d2d903ad580a32d4" id="r_af0bbde0f5a099162d2d903ad580a32d4"><td class="memItemLeft" align="right" valign="top">pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0bbde0f5a099162d2d903ad580a32d4">operator-&gt;</a> () const</td></tr>
-<tr class="memdesc:af0bbde0f5a099162d2d903ad580a32d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the element at which the iterator is pointing to.  <br /></td></tr>
+<tr class="memdesc:af0bbde0f5a099162d2d903ad580a32d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the element to which the iterator points.  <br /></td></tr>
 <tr class="separator:af0bbde0f5a099162d2d903ad580a32d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04d591771312e455b51d5cc1459e4e5e" id="r_a04d591771312e455b51d5cc1459e4e5e"><td class="memItemLeft" align="right" valign="top"><a id="a04d591771312e455b51d5cc1459e4e5e" name="a04d591771312e455b51d5cc1459e4e5e"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1ConstIterator.html">ConstIterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> ()</td></tr>
@@ -181,7 +186,11 @@ Friends</h2></td></tr>
 <a class="el" href="classTenSore_1_1Tensor_1_1ConstIterator.html">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (difference_type n, const <a class="el" href="classTenSore_1_1Tensor_1_1ConstIterator.html">ConstIterator</a> &amp;it)</td></tr>
 <tr class="separator:a27d84967e3ccfd15e1299c3b07aa158b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt;<br />
+class TenSore::Tensor&lt; T, Order, A &gt;::ConstIterator</div><p>Const iterator class of <a class="el" href="classTenSore_1_1Tensor.html" title="Mathematical tensor type.">Tensor</a>. </p>
+<p>The <a class="el" href="classTenSore_1_1Tensor_1_1ConstIterator.html" title="Const iterator class of Tensor.">ConstIterator</a> class represents a const iterator of <a class="el" href="classTenSore_1_1Tensor.html" title="Mathematical tensor type.">Tensor</a>. It contains an index to which it points, and provides necessary operations for STL integration, as well as thread-safety. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a83d61eea2693c448ca95fb3ac3400cde" name="a83d61eea2693c448ca95fb3ac3400cde"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a83d61eea2693c448ca95fb3ac3400cde">&#9670;&#160;</a></span>ConstIterator()</h2>
 
@@ -220,7 +229,7 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_Tensor</td><td>Raw pointer to a tensor </td></tr>
-    <tr><td class="paramname">p_Idx</td><td>Index of an element at which this iterator points </td></tr>
+    <tr><td class="paramname">p_Idx</td><td>Index of an element to which this iterator points </td></tr>
     <tr><td class="paramname">p_Version</td><td>Version of a tensor </td></tr>
   </table>
   </dd>
@@ -284,8 +293,8 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
 </table>
 </div><div class="memdoc">
 
-<p>Pointer to the element at which the iterator is pointing to. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the element at which the iterator is pointing to </dd></dl>
+<p>Pointer to the element to which the iterator points. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the element to which the iterator points </dd></dl>
 
 </div>
 </div>
