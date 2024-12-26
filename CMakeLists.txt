@@ -15,6 +15,7 @@ file(GLOB EXAMPLES examples/*.cpp)
 foreach(EXAMPLES ${EXAMPLES})
   get_filename_component(EXAMPLE_NAME ${EXAMPLES} NAME_WE)
   add_executable(${EXAMPLE_NAME} ${EXAMPLES})
+  target_link_libraries(${EXAMPLE_NAME} pthread)
   list(APPEND EXEXECS ${EXAMPLE_NAME})
 endforeach()
 
