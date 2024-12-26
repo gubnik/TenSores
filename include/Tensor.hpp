@@ -90,7 +90,6 @@ public:
    */
   Tensor(const Tensor& p_Other)
   {
-    std::shared_lock<std::shared_mutex> lock(p_Other.mutex());
     m_DimensionsData = p_Other.m_DimensionsData;
     m_Data = p_Other.m_Data;
   }
@@ -102,7 +101,6 @@ public:
    */
   Tensor(Tensor&& p_Other) noexcept
   {
-    std::shared_lock<std::shared_mutex> lock(p_Other.mutex());
     m_DimensionsData = std::move(p_Other.m_DimensionsData);
     m_Data = std::move(p_Other.m_Data);
   }
@@ -473,7 +471,7 @@ public:
     /**
      * @brief Constructor of tensor
      *
-     * @param p_Tensor Raw pointer to a tensor
+     * @param p_Tensor Raw [[nodiscard]] pointer to a tensor
      * @param p_Idx Index of an element to which this iterator points
      * @param p_Version Version of a tensor
      */
@@ -521,73 +519,85 @@ public:
     }
 
     /**
-     * @brief Pointer to the element to which the iterator points
+     * @brief pointer to the element to which the iterator points
      *
-     * @return Pointer to the element to which the iterator points
+     * @brief pointer to the element to which the iterator points
      */
-    pointer operator->()
+    [[nodiscard]] pointer operator->()
     {
       test_for_invalidation();
       return &(**this);
     }
 
-    Iterator& operator++()
+    /**
+     * @brief pointer to the element to which the iterator points
+     *
+     * @brief pointer to the element to which the iterator points
+     */
+    const pointer operator->() const
+    {
+      test_for_invalidation();
+      return &(**this);
+    }
+
+    Iterator& operator++() noexcept
     {
       ++m_Index;
       return *this;
     }
 
-    Iterator operator++(int)
+    Iterator operator++(int) noexcept
     {
       Iterator temp = *this;
       ++(*this);
       return temp;
     }
 
-    Iterator& operator+=(difference_type n)
+    Iterator& operator+=(difference_type n) noexcept
     {
       m_Index += n;
       return *this;
     }
 
-    Iterator operator+(difference_type n) const
+    Iterator operator+(difference_type n) const noexcept
     {
       Iterator temp = *this;
       temp += n;
       return temp;
     }
 
-    friend Iterator operator+(difference_type n, const Iterator& it)
+    friend Iterator operator+(difference_type n, const Iterator& it) noexcept
     {
       return it + n;
     }
 
-    Iterator& operator--()
+    Iterator& operator--() noexcept
     {
       --m_Index;
       return *this;
     }
 
-    Iterator operator--(int)
+    Iterator operator--(int) noexcept
     {
       Iterator temp = *this;
       --(*this);
       return temp;
     }
-    Iterator& operator-=(difference_type n)
+
+    Iterator& operator-=(difference_type n) noexcept
     {
       m_Index -= n;
       return *this;
     }
 
-    Iterator operator-(difference_type n) const
+    Iterator operator-(difference_type n) const noexcept
     {
       Iterator temp = *this;
       temp -= n;
       return temp;
     }
 
-    difference_type operator-(const Iterator& other) const
+    difference_type operator-(const Iterator& other) const noexcept
     {
       return m_Index - other.m_Index;
     }
@@ -598,14 +608,14 @@ public:
       return *(*this + n);
     }
 
-    bool operator==(const Iterator& other) const
+    bool operator==(const Iterator& other) const noexcept
     {
       return m_Index == other.m_Index;
     }
 
-    bool operator!=(const Iterator& other) const { return !(*this == other); }
+    bool operator!=(const Iterator& other) const noexcept { return !(*this == other); }
 
-    auto operator<=>(const Iterator& other) const = default;
+    auto operator<=>(const Iterator& other) const noexcept = default;
 
   private:
     Tensor* m_TensorPtr;
@@ -634,7 +644,7 @@ public:
     /**
      * @brief Constructor of tensor
      *
-     * @param p_Tensor Raw pointer to a tensor
+     * @param p_Tensor Raw [[nodiscard]] pointer to a tensor
      * @param p_Idx Index of an element to which this iterator points
      * @param p_Version Version of a tensor
      */
@@ -651,7 +661,7 @@ public:
 
     const Tensor<T, Order>& tensor() const noexcept { return *m_TensorPtr; }
 
-    void test_for_invalidation()
+    void test_for_invalidation() const
     {
       if (m_TensorPtr->m_Version != m_Version) {
         throw std::runtime_error("ConstIterator to a censor was invalidated");
@@ -671,74 +681,74 @@ public:
     }
 
     /**
-     * @brief Pointer to the element to which the iterator points
+     * @brief pointer to the element to which the iterator points
      *
-     * @return Pointer to the element to which the iterator points
+     * @brief pointer to the element to which the iterator points
      */
-    pointer operator->() const
+    [[nodiscard]] pointer operator->() const
     {
       test_for_invalidation();
       return &(**this);
     }
 
-    ConstIterator& operator++()
+    ConstIterator& operator++() noexcept
     {
       ++m_Index;
       return *this;
     }
 
-    ConstIterator operator++(int)
+    ConstIterator operator++(int) noexcept
     {
       ConstIterator temp = *this;
       ++(*this);
       return temp;
     }
 
-    ConstIterator& operator+=(difference_type n)
+    ConstIterator& operator+=(difference_type n) noexcept
     {
       m_Index += n;
       return *this;
     }
 
-    ConstIterator operator+(difference_type n) const
+    ConstIterator operator+(difference_type n) const noexcept
     {
       ConstIterator temp = *this;
       temp += n;
       return temp;
     }
 
-    friend ConstIterator operator+(difference_type n, const ConstIterator& it)
+    friend ConstIterator operator+(difference_type n, const ConstIterator& it) noexcept
     {
       return it + n;
     }
 
-    ConstIterator& operator--()
+    ConstIterator& operator--() noexcept
     {
       --m_Index;
       return *this;
     }
 
-    ConstIterator operator--(int)
+    ConstIterator operator--(int) noexcept
     {
       ConstIterator temp = *this;
       --(*this);
       return temp;
     }
 
-    ConstIterator& operator-=(difference_type n)
+    ConstIterator& operator-=(difference_type n) noexcept
     {
       m_Index -= n;
       return *this;
     }
 
-    ConstIterator operator-(difference_type n) const
+    ConstIterator operator-(difference_type n) const noexcept
     {
       ConstIterator temp = *this;
       temp -= n;
       return temp;
     }
 
-    difference_type operator-(const ConstIterator& other) const
+    difference_type operator-(const ConstIterator& other) const noexcept
     {
       return m_Index - other.m_Index;
     }
@@ -749,12 +759,12 @@ public:
       return *(*this + n);
     }
 
-    bool operator==(const ConstIterator& other) const
+    bool operator==(const ConstIterator& other) const noexcept
     {
       return m_Index == other.m_Index;
     }
 
-    bool operator!=(const ConstIterator& other) const
+    bool operator!=(const ConstIterator& other) const noexcept
     {
       return !(*this == other);
     }
