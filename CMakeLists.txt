@@ -8,6 +8,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories(include)
 
-install(DIRECTORY include/ DESTINATION /usr/include/TenSore)
+install(DIRECTORY include/ DESTINATION /usr/include/TenSores)
 
-add_executable(Example main.cpp)
+file(GLOB EXAMPLES examples/*.cpp)
+
+foreach(EXAMPLES ${EXAMPLES})
+  get_filename_component(EXAMPLE_NAME ${EXAMPLES} NAME_WE)
+  add_executable(${EXAMPLE_NAME} ${EXAMPLES})
+  list(APPEND EXEXECS ${EXAMPLE_NAME})
+endforeach()
+
+add_custom_target(examples DEPENDS ${EXEXECS})
