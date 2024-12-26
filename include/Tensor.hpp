@@ -35,7 +35,7 @@ namespace TenSore {
  * @brief Mathematical tensor type
  *
  * @tparam T The type of value contained in a tensor
- * @tparam Order Dimensions of a tensor (1 - vector, 2 - matrix, etc.)
+ * @tparam Rank Dimensions of a tensor (1 - vector, 2 - matrix, etc.)
  * @tparam A The type of allocator used to manage memory of inside field
  *
  * @details
@@ -43,7 +43,7 @@ namespace TenSore {
  * with regards to thread-safety and ownership semantics.
  * Iterators of this class are to be invalidated on any size change.
  */
-template<typename T, std::size_t Order, Allocator A = std::allocator<T>>
+template<typename T, std::size_t Rank, Allocator A = std::allocator<T>>
 class Tensor
 {
 
@@ -59,12 +59,12 @@ public:
    * @brief A template constructor for initializer list
    *
    * @tparam p_Dimensions Dimensions of a tensor,
-   * amount of dimesnions provided must be equal to Order
+   * amount of dimesnions provided must be equal to Rank
    */
   template<std::size_t... p_Dimensions>
   Tensor()
   {
-    static_assert(sizeof...(p_Dimensions) == Order,
+    static_assert(sizeof...(p_Dimensions) == Rank,
                   "Misaligned dimensions of tensor in a constructor");
     m_DimensionsData = { { p_Dimensions... } };
     fsize();
@@ -76,7 +76,7 @@ public:
    *
    * @param p_Dimensions Array of dimensions
    */
-  Tensor(std::array<size_t, Order>&& p_Dimensions)
+  Tensor(std::array<size_t, Rank>&& p_Dimensions)
   {
     m_DimensionsData = std::move(p_Dimensions);
     fsize();
@@ -172,7 +172,7 @@ public:
 
   const std::vector<T> data() const noexcept { return m_Data; }
 
-  const std::array<std::size_t, Order>& dimensions() const noexcept
+  const std::array<std::size_t, Rank>& dimensions() const noexcept
   {
     return m_DimensionsData;
   }
@@ -221,7 +221,7 @@ public:
    *
    * @return Element at calculated index
    */
-  T& at(const std::array<std::size_t, Order>& dims)
+  T& at(const std::array<std::size_t, Rank>& dims)
   {
     std::shared_lock<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
@@ -235,7 +235,7 @@ public:
    *
    * @return Const lement at calculated index
    */
-  const T& at(const std::array<std::size_t, Order>& dims) const
+  const T& at(const std::array<std::size_t, Rank>& dims) const
   {
     std::shared_lock<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
@@ -246,17 +246,17 @@ public:
    * @brief Element access operator with calculated index
    *
    * @tparam p_Dimensions Dimension coordinates to access.
-   * Amount of coordinates must be equal to Order.
+   * Amount of coordinates must be equal to Rank.
    *
    * @return Element at calculated index
    */
   template<std::size_t... p_Dimensions>
   T& operator()()
   {
-    static_assert(sizeof...(p_Dimensions) == Order,
+    static_assert(sizeof...(p_Dimensions) == Rank,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
+    const std::array<std::size_t, Rank> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
 
@@ -264,17 +264,17 @@ public:
    * @brief Const element access operator with calculated index
    *
    * @tparam p_Dimensions Dimension coordinates to access.
-   * Amount of coordinates must be equal to Order.
+   * Amount of coordinates must be equal to Rank.
    *
    * @return Const element at calculated index
    */
   template<std::size_t... p_Dimensions>
   const T& operator()() const
   {
-    static_assert(sizeof...(p_Dimensions) == Order,
+    static_assert(sizeof...(p_Dimensions) == Rank,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
+    const std::array<std::size_t, Rank> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
 
@@ -285,7 +285,7 @@ public:
    *
    * @return Element at calculated index
    */
-  T& operator()(const std::array<std::size_t, Order>& p_Dims)
+  T& operator()(const std::array<std::size_t, Rank>& p_Dims)
   {
     return at(p_Dims);
   }
@@ -297,7 +297,7 @@ public:
    *
    * @return Const element at calculated index
    */
-  const T& operator()(const std::array<std::size_t, Order>& p_Dims) const
+  const T& operator()(const std::array<std::size_t, Rank>& p_Dims) const
   {
     return at(p_Dims);
   }
@@ -404,12 +404,12 @@ private:
    *
    * @return Calculated global index
    */
-  std::size_t calculateIndex(const std::array<std::size_t, Order>& dims) const
+  std::size_t calculateIndex(const std::array<std::size_t, Rank>& dims) const
   {
     std::shared_lock<std::shared_mutex> lock(mutex());
     std::size_t index = 0;
     std::size_t multiplier = 1;
-    for (std::size_t i = 0; i < Order; ++i) {
+    for (std::size_t i = 0; i < Rank; ++i) {
       if (dims[i] >= m_DimensionsData[i]) {
         throw std::out_of_range("Index out of bounds");
       }
@@ -428,7 +428,7 @@ protected:
   /**
    * @brief Array that conctains the sizes for each dimension of the tensor
    */
-  std::array<std::size_t, Order> m_DimensionsData;
+  std::array<std::size_t, Rank> m_DimensionsData;
 
   /**
    * @brief Vector of all the elements of a tensor
@@ -484,7 +484,7 @@ public:
 
     std::size_t index() const noexcept { return m_Index; }
 
-    const Tensor<T, Order>& tensor() const noexcept { return *m_TensorPtr; }
+    const Tensor<T, Rank>& tensor() const noexcept { return *m_TensorPtr; }
 
     void test_for_invalidation()
     {
@@ -659,7 +659,7 @@ public:
 
     std::size_t index() const noexcept { return m_Index; }
 
-    const Tensor<T, Order>& tensor() const noexcept { return *m_TensorPtr; }
+    const Tensor<T, Rank>& tensor() const noexcept { return *m_TensorPtr; }
 
     void test_for_invalidation() const
     {

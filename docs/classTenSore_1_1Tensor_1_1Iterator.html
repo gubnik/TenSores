@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TenSores: TenSore::Tensor&lt; T, Order, A &gt;::Iterator Class Reference</title>
+<title>TenSores: TenSore::Tensor&lt; T, Rank, A &gt;::Iterator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,7 +93,7 @@ $(function(){ initResizable(false); });
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classTenSore_1_1Tensor_1_1Iterator-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">TenSore::Tensor&lt; T, Order, A &gt;::Iterator Class Reference</div></div>
+  <div class="headertitle"><div class="title">TenSore::Tensor&lt; T, Rank, A &gt;::Iterator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -104,87 +104,87 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ae88badffd5922d817ab8d1a91002aef8" id="r_ae88badffd5922d817ab8d1a91002aef8"><td class="memItemLeft" align="right" valign="top"><a id="ae88badffd5922d817ab8d1a91002aef8" name="ae88badffd5922d817ab8d1a91002aef8"></a>
+<tr class="memitem:a4f3f3174be9bc43289dc924e3dc9b21a" id="r_a4f3f3174be9bc43289dc924e3dc9b21a"><td class="memItemLeft" align="right" valign="top"><a id="a4f3f3174be9bc43289dc924e3dc9b21a" name="a4f3f3174be9bc43289dc924e3dc9b21a"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator_category</b> = std::random_access_iterator_tag</td></tr>
-<tr class="separator:ae88badffd5922d817ab8d1a91002aef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d9cc724535cc941fa69e56c1ebd0a02" id="r_a1d9cc724535cc941fa69e56c1ebd0a02"><td class="memItemLeft" align="right" valign="top"><a id="a1d9cc724535cc941fa69e56c1ebd0a02" name="a1d9cc724535cc941fa69e56c1ebd0a02"></a>
+<tr class="separator:a4f3f3174be9bc43289dc924e3dc9b21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa05db4436e0b2c443c5edf4feb930a" id="r_a9fa05db4436e0b2c443c5edf4feb930a"><td class="memItemLeft" align="right" valign="top"><a id="a9fa05db4436e0b2c443c5edf4feb930a" name="a9fa05db4436e0b2c443c5edf4feb930a"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = T</td></tr>
-<tr class="separator:a1d9cc724535cc941fa69e56c1ebd0a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adef31c5b467b37e635a79ad79c94324b" id="r_adef31c5b467b37e635a79ad79c94324b"><td class="memItemLeft" align="right" valign="top"><a id="adef31c5b467b37e635a79ad79c94324b" name="adef31c5b467b37e635a79ad79c94324b"></a>
+<tr class="separator:a9fa05db4436e0b2c443c5edf4feb930a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca32e6b99f774931bb6ff8dd7b3d7c5" id="r_aaca32e6b99f774931bb6ff8dd7b3d7c5"><td class="memItemLeft" align="right" valign="top"><a id="aaca32e6b99f774931bb6ff8dd7b3d7c5" name="aaca32e6b99f774931bb6ff8dd7b3d7c5"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b> = std::ptrdiff_t</td></tr>
-<tr class="separator:adef31c5b467b37e635a79ad79c94324b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae29f70e763c0e2560a21fa7ca9fd0953" id="r_ae29f70e763c0e2560a21fa7ca9fd0953"><td class="memItemLeft" align="right" valign="top"><a id="ae29f70e763c0e2560a21fa7ca9fd0953" name="ae29f70e763c0e2560a21fa7ca9fd0953"></a>
+<tr class="separator:aaca32e6b99f774931bb6ff8dd7b3d7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a759b37a521cead395213ef1a7dcd5d26" id="r_a759b37a521cead395213ef1a7dcd5d26"><td class="memItemLeft" align="right" valign="top"><a id="a759b37a521cead395213ef1a7dcd5d26" name="a759b37a521cead395213ef1a7dcd5d26"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = T*</td></tr>
-<tr class="separator:ae29f70e763c0e2560a21fa7ca9fd0953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc426095e4097929b90a98a4ea12ef5f" id="r_afc426095e4097929b90a98a4ea12ef5f"><td class="memItemLeft" align="right" valign="top"><a id="afc426095e4097929b90a98a4ea12ef5f" name="afc426095e4097929b90a98a4ea12ef5f"></a>
+<tr class="separator:a759b37a521cead395213ef1a7dcd5d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d8739cab04d3e50c757af53b67c5a4" id="r_af7d8739cab04d3e50c757af53b67c5a4"><td class="memItemLeft" align="right" valign="top"><a id="af7d8739cab04d3e50c757af53b67c5a4" name="af7d8739cab04d3e50c757af53b67c5a4"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = T&amp;</td></tr>
-<tr class="separator:afc426095e4097929b90a98a4ea12ef5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:af7d8739cab04d3e50c757af53b67c5a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1f0704ef816aa6d67c2d97e9565d961b" id="r_a1f0704ef816aa6d67c2d97e9565d961b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f0704ef816aa6d67c2d97e9565d961b">Iterator</a> (<a class="el" href="classTenSore_1_1Tensor.html">Tensor</a> *p_Tensor, std::size_t p_Idx, std::size_t p_Version)</td></tr>
-<tr class="memdesc:a1f0704ef816aa6d67c2d97e9565d961b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of tensor.  <br /></td></tr>
-<tr class="separator:a1f0704ef816aa6d67c2d97e9565d961b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18cecf178dde592539e0dae457e614bc" id="r_a18cecf178dde592539e0dae457e614bc"><td class="memItemLeft" align="right" valign="top"><a id="a18cecf178dde592539e0dae457e614bc" name="a18cecf178dde592539e0dae457e614bc"></a>
+<tr class="memitem:a5478d3a6dd8a68727c93cf52ce42acaf" id="r_a5478d3a6dd8a68727c93cf52ce42acaf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5478d3a6dd8a68727c93cf52ce42acaf">Iterator</a> (<a class="el" href="classTenSore_1_1Tensor.html">Tensor</a> *p_Tensor, std::size_t p_Idx, std::size_t p_Version)</td></tr>
+<tr class="memdesc:a5478d3a6dd8a68727c93cf52ce42acaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor of tensor.  <br /></td></tr>
+<tr class="separator:a5478d3a6dd8a68727c93cf52ce42acaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec0797ab913e7eeaff7ad08e0549c64" id="r_a7ec0797ab913e7eeaff7ad08e0549c64"><td class="memItemLeft" align="right" valign="top"><a id="a7ec0797ab913e7eeaff7ad08e0549c64" name="a7ec0797ab913e7eeaff7ad08e0549c64"></a>
 std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>index</b> () const noexcept</td></tr>
-<tr class="separator:a18cecf178dde592539e0dae457e614bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f841db67c755e8688c2ab28726365ee" id="r_a8f841db67c755e8688c2ab28726365ee"><td class="memItemLeft" align="right" valign="top"><a id="a8f841db67c755e8688c2ab28726365ee" name="a8f841db67c755e8688c2ab28726365ee"></a>
-const <a class="el" href="classTenSore_1_1Tensor.html">Tensor</a>&lt; T, Order &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>tensor</b> () const noexcept</td></tr>
-<tr class="separator:a8f841db67c755e8688c2ab28726365ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af05fd985488577d72adb31d60331fd9c" id="r_af05fd985488577d72adb31d60331fd9c"><td class="memItemLeft" align="right" valign="top"><a id="af05fd985488577d72adb31d60331fd9c" name="af05fd985488577d72adb31d60331fd9c"></a>
+<tr class="separator:a7ec0797ab913e7eeaff7ad08e0549c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f33b4c4048e66780881417874ee5535" id="r_a5f33b4c4048e66780881417874ee5535"><td class="memItemLeft" align="right" valign="top"><a id="a5f33b4c4048e66780881417874ee5535" name="a5f33b4c4048e66780881417874ee5535"></a>
+const <a class="el" href="classTenSore_1_1Tensor.html">Tensor</a>&lt; T, Rank &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>tensor</b> () const noexcept</td></tr>
+<tr class="separator:a5f33b4c4048e66780881417874ee5535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626d8bd579dc9412d6936b2d93a91e9b" id="r_a626d8bd579dc9412d6936b2d93a91e9b"><td class="memItemLeft" align="right" valign="top"><a id="a626d8bd579dc9412d6936b2d93a91e9b" name="a626d8bd579dc9412d6936b2d93a91e9b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>test_for_invalidation</b> ()</td></tr>
-<tr class="separator:af05fd985488577d72adb31d60331fd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac67a00a788543ea63d5feefedadc4077" id="r_ac67a00a788543ea63d5feefedadc4077"><td class="memItemLeft" align="right" valign="top">reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac67a00a788543ea63d5feefedadc4077">operator*</a> ()</td></tr>
-<tr class="memdesc:ac67a00a788543ea63d5feefedadc4077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to access the element.  <br /></td></tr>
-<tr class="separator:ac67a00a788543ea63d5feefedadc4077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d6326b134df5b2e9707e1ab3d0fbc24" id="r_a3d6326b134df5b2e9707e1ab3d0fbc24"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6326b134df5b2e9707e1ab3d0fbc24">operator*</a> () const</td></tr>
-<tr class="memdesc:a3d6326b134df5b2e9707e1ab3d0fbc24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to access the element.  <br /></td></tr>
-<tr class="separator:a3d6326b134df5b2e9707e1ab3d0fbc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cdcdbe16e91e36017aa0a640812141a" id="r_a8cdcdbe16e91e36017aa0a640812141a"><td class="memItemLeft" align="right" valign="top">pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8cdcdbe16e91e36017aa0a640812141a">operator-&gt;</a> ()</td></tr>
-<tr class="memdesc:a8cdcdbe16e91e36017aa0a640812141a"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the element to which the iterator points  <br /></td></tr>
-<tr class="separator:a8cdcdbe16e91e36017aa0a640812141a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2f30768067cbf1e5a7b5a0da98d0a8f" id="r_ae2f30768067cbf1e5a7b5a0da98d0a8f"><td class="memItemLeft" align="right" valign="top">const pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2f30768067cbf1e5a7b5a0da98d0a8f">operator-&gt;</a> () const</td></tr>
-<tr class="memdesc:ae2f30768067cbf1e5a7b5a0da98d0a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the element to which the iterator points  <br /></td></tr>
-<tr class="separator:ae2f30768067cbf1e5a7b5a0da98d0a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef8c09a5492984ca52eb715e8eae3405" id="r_aef8c09a5492984ca52eb715e8eae3405"><td class="memItemLeft" align="right" valign="top"><a id="aef8c09a5492984ca52eb715e8eae3405" name="aef8c09a5492984ca52eb715e8eae3405"></a>
+<tr class="separator:a626d8bd579dc9412d6936b2d93a91e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abcfac63d8147272abab93ccb69a855" id="r_a3abcfac63d8147272abab93ccb69a855"><td class="memItemLeft" align="right" valign="top">reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3abcfac63d8147272abab93ccb69a855">operator*</a> ()</td></tr>
+<tr class="memdesc:a3abcfac63d8147272abab93ccb69a855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to access the element.  <br /></td></tr>
+<tr class="separator:a3abcfac63d8147272abab93ccb69a855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d28ffb6528c22667875681f17366fcc" id="r_a7d28ffb6528c22667875681f17366fcc"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d28ffb6528c22667875681f17366fcc">operator*</a> () const</td></tr>
+<tr class="memdesc:a7d28ffb6528c22667875681f17366fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereference operator to access the element.  <br /></td></tr>
+<tr class="separator:a7d28ffb6528c22667875681f17366fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac016beecdb9069f7a03ae837aaae64a1" id="r_ac016beecdb9069f7a03ae837aaae64a1"><td class="memItemLeft" align="right" valign="top">pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac016beecdb9069f7a03ae837aaae64a1">operator-&gt;</a> ()</td></tr>
+<tr class="memdesc:ac016beecdb9069f7a03ae837aaae64a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the element to which the iterator points  <br /></td></tr>
+<tr class="separator:ac016beecdb9069f7a03ae837aaae64a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18193eda923b949e8f02c8beadf06d43" id="r_a18193eda923b949e8f02c8beadf06d43"><td class="memItemLeft" align="right" valign="top">const pointer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18193eda923b949e8f02c8beadf06d43">operator-&gt;</a> () const</td></tr>
+<tr class="memdesc:a18193eda923b949e8f02c8beadf06d43"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the element to which the iterator points  <br /></td></tr>
+<tr class="separator:a18193eda923b949e8f02c8beadf06d43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba99a77e03219642531d68c36b17dfbc" id="r_aba99a77e03219642531d68c36b17dfbc"><td class="memItemLeft" align="right" valign="top"><a id="aba99a77e03219642531d68c36b17dfbc" name="aba99a77e03219642531d68c36b17dfbc"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> () noexcept</td></tr>
-<tr class="separator:aef8c09a5492984ca52eb715e8eae3405"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57113f54393d11953436f343e13ff990" id="r_a57113f54393d11953436f343e13ff990"><td class="memItemLeft" align="right" valign="top"><a id="a57113f54393d11953436f343e13ff990" name="a57113f54393d11953436f343e13ff990"></a>
+<tr class="separator:aba99a77e03219642531d68c36b17dfbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba06f8d6754850991136cbd9b15a821c" id="r_aba06f8d6754850991136cbd9b15a821c"><td class="memItemLeft" align="right" valign="top"><a id="aba06f8d6754850991136cbd9b15a821c" name="aba06f8d6754850991136cbd9b15a821c"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int) noexcept</td></tr>
-<tr class="separator:a57113f54393d11953436f343e13ff990"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3813194b83cbc2b88a95d7bdefef4306" id="r_a3813194b83cbc2b88a95d7bdefef4306"><td class="memItemLeft" align="right" valign="top"><a id="a3813194b83cbc2b88a95d7bdefef4306" name="a3813194b83cbc2b88a95d7bdefef4306"></a>
+<tr class="separator:aba06f8d6754850991136cbd9b15a821c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa48a15f60eca8274b58df1c7094e7e46" id="r_aa48a15f60eca8274b58df1c7094e7e46"><td class="memItemLeft" align="right" valign="top"><a id="aa48a15f60eca8274b58df1c7094e7e46" name="aa48a15f60eca8274b58df1c7094e7e46"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (difference_type n) noexcept</td></tr>
-<tr class="separator:a3813194b83cbc2b88a95d7bdefef4306"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af21a76b50161e66559af6232c42bc340" id="r_af21a76b50161e66559af6232c42bc340"><td class="memItemLeft" align="right" valign="top"><a id="af21a76b50161e66559af6232c42bc340" name="af21a76b50161e66559af6232c42bc340"></a>
+<tr class="separator:aa48a15f60eca8274b58df1c7094e7e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef29b9520d49a1d4a5abb32191cff213" id="r_aef29b9520d49a1d4a5abb32191cff213"><td class="memItemLeft" align="right" valign="top"><a id="aef29b9520d49a1d4a5abb32191cff213" name="aef29b9520d49a1d4a5abb32191cff213"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (difference_type n) const noexcept</td></tr>
-<tr class="separator:af21a76b50161e66559af6232c42bc340"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5569b44496a13f4d9d5ed510b286f170" id="r_a5569b44496a13f4d9d5ed510b286f170"><td class="memItemLeft" align="right" valign="top"><a id="a5569b44496a13f4d9d5ed510b286f170" name="a5569b44496a13f4d9d5ed510b286f170"></a>
+<tr class="separator:aef29b9520d49a1d4a5abb32191cff213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a133f137272f89d667996b0e5bab29e70" id="r_a133f137272f89d667996b0e5bab29e70"><td class="memItemLeft" align="right" valign="top"><a id="a133f137272f89d667996b0e5bab29e70" name="a133f137272f89d667996b0e5bab29e70"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> () noexcept</td></tr>
-<tr class="separator:a5569b44496a13f4d9d5ed510b286f170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05290ecc4a4255c869ce8d850375553b" id="r_a05290ecc4a4255c869ce8d850375553b"><td class="memItemLeft" align="right" valign="top"><a id="a05290ecc4a4255c869ce8d850375553b" name="a05290ecc4a4255c869ce8d850375553b"></a>
+<tr class="separator:a133f137272f89d667996b0e5bab29e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa38a6d664f1addd99e09a02d147d4dab" id="r_aa38a6d664f1addd99e09a02d147d4dab"><td class="memItemLeft" align="right" valign="top"><a id="aa38a6d664f1addd99e09a02d147d4dab" name="aa38a6d664f1addd99e09a02d147d4dab"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator--</b> (int) noexcept</td></tr>
-<tr class="separator:a05290ecc4a4255c869ce8d850375553b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c4cd83e28bbda9f3e5e612280a46b90" id="r_a9c4cd83e28bbda9f3e5e612280a46b90"><td class="memItemLeft" align="right" valign="top"><a id="a9c4cd83e28bbda9f3e5e612280a46b90" name="a9c4cd83e28bbda9f3e5e612280a46b90"></a>
+<tr class="separator:aa38a6d664f1addd99e09a02d147d4dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16ca28c0f506b08c78dbda589da785e" id="r_ae16ca28c0f506b08c78dbda589da785e"><td class="memItemLeft" align="right" valign="top"><a id="ae16ca28c0f506b08c78dbda589da785e" name="ae16ca28c0f506b08c78dbda589da785e"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (difference_type n) noexcept</td></tr>
-<tr class="separator:a9c4cd83e28bbda9f3e5e612280a46b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab257caf7938ee324a2d40239f395b637" id="r_ab257caf7938ee324a2d40239f395b637"><td class="memItemLeft" align="right" valign="top"><a id="ab257caf7938ee324a2d40239f395b637" name="ab257caf7938ee324a2d40239f395b637"></a>
+<tr class="separator:ae16ca28c0f506b08c78dbda589da785e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7344ce27aa9427aede61e027a5cd7c65" id="r_a7344ce27aa9427aede61e027a5cd7c65"><td class="memItemLeft" align="right" valign="top"><a id="a7344ce27aa9427aede61e027a5cd7c65" name="a7344ce27aa9427aede61e027a5cd7c65"></a>
 <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (difference_type n) const noexcept</td></tr>
-<tr class="separator:ab257caf7938ee324a2d40239f395b637"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5f4ca01c011fa93ff0cfad06e5345e3" id="r_ae5f4ca01c011fa93ff0cfad06e5345e3"><td class="memItemLeft" align="right" valign="top"><a id="ae5f4ca01c011fa93ff0cfad06e5345e3" name="ae5f4ca01c011fa93ff0cfad06e5345e3"></a>
+<tr class="separator:a7344ce27aa9427aede61e027a5cd7c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17fd5510e8cf458c72ed0bb3f8fd4e00" id="r_a17fd5510e8cf458c72ed0bb3f8fd4e00"><td class="memItemLeft" align="right" valign="top"><a id="a17fd5510e8cf458c72ed0bb3f8fd4e00" name="a17fd5510e8cf458c72ed0bb3f8fd4e00"></a>
 difference_type&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;other) const noexcept</td></tr>
-<tr class="separator:ae5f4ca01c011fa93ff0cfad06e5345e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0feec5b18e2906a58b51375fa82821c1" id="r_a0feec5b18e2906a58b51375fa82821c1"><td class="memItemLeft" align="right" valign="top"><a id="a0feec5b18e2906a58b51375fa82821c1" name="a0feec5b18e2906a58b51375fa82821c1"></a>
+<tr class="separator:a17fd5510e8cf458c72ed0bb3f8fd4e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae55f2fc02f3e912293c307a43522872d" id="r_ae55f2fc02f3e912293c307a43522872d"><td class="memItemLeft" align="right" valign="top"><a id="ae55f2fc02f3e912293c307a43522872d" name="ae55f2fc02f3e912293c307a43522872d"></a>
 reference&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (difference_type n)</td></tr>
-<tr class="separator:a0feec5b18e2906a58b51375fa82821c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03d4ca7cf121b38fbc1df475dc499419" id="r_a03d4ca7cf121b38fbc1df475dc499419"><td class="memItemLeft" align="right" valign="top"><a id="a03d4ca7cf121b38fbc1df475dc499419" name="a03d4ca7cf121b38fbc1df475dc499419"></a>
+<tr class="separator:ae55f2fc02f3e912293c307a43522872d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a652007a56d432419f8c8782fec359992" id="r_a652007a56d432419f8c8782fec359992"><td class="memItemLeft" align="right" valign="top"><a id="a652007a56d432419f8c8782fec359992" name="a652007a56d432419f8c8782fec359992"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;other) const noexcept</td></tr>
-<tr class="separator:a03d4ca7cf121b38fbc1df475dc499419"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adee43c3d1305d790e338bde4b81d8fd0" id="r_adee43c3d1305d790e338bde4b81d8fd0"><td class="memItemLeft" align="right" valign="top"><a id="adee43c3d1305d790e338bde4b81d8fd0" name="adee43c3d1305d790e338bde4b81d8fd0"></a>
+<tr class="separator:a652007a56d432419f8c8782fec359992"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814830871b1b0d0f6a88b9f38192b207" id="r_a814830871b1b0d0f6a88b9f38192b207"><td class="memItemLeft" align="right" valign="top"><a id="a814830871b1b0d0f6a88b9f38192b207" name="a814830871b1b0d0f6a88b9f38192b207"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;other) const noexcept</td></tr>
-<tr class="separator:adee43c3d1305d790e338bde4b81d8fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82ad868eace364d745e30eb4a31df3d2" id="r_a82ad868eace364d745e30eb4a31df3d2"><td class="memItemLeft" align="right" valign="top"><a id="a82ad868eace364d745e30eb4a31df3d2" name="a82ad868eace364d745e30eb4a31df3d2"></a>
+<tr class="separator:a814830871b1b0d0f6a88b9f38192b207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f69adf5a7cc6916dcd66cb78997a73c" id="r_a6f69adf5a7cc6916dcd66cb78997a73c"><td class="memItemLeft" align="right" valign="top"><a id="a6f69adf5a7cc6916dcd66cb78997a73c" name="a6f69adf5a7cc6916dcd66cb78997a73c"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=&gt;</b> (const <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html">Iterator</a> &amp;other) const noexcept=default</td></tr>
-<tr class="separator:a82ad868eace364d745e30eb4a31df3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a6f69adf5a7cc6916dcd66cb78997a73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -193,23 +193,23 @@ Friends</h2></td></tr>
 <tr class="separator:a61c802c28a4eacdbe6ed04ea4f9ddfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt;<br />
-class TenSore::Tensor&lt; T, Order, A &gt;::Iterator</div><p><a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html" title="Iterator class of Tensor.">Iterator</a> class of <a class="el" href="classTenSore_1_1Tensor.html" title="Mathematical tensor type.">Tensor</a>. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T, std::size_t Rank, Allocator A = std::allocator&lt;T&gt;&gt;<br />
+class TenSore::Tensor&lt; T, Rank, A &gt;::Iterator</div><p><a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html" title="Iterator class of Tensor.">Iterator</a> class of <a class="el" href="classTenSore_1_1Tensor.html" title="Mathematical tensor type.">Tensor</a>. </p>
 <p>The <a class="el" href="classTenSore_1_1Tensor_1_1Iterator.html" title="Iterator class of Tensor.">Iterator</a> class represents an iterator of <a class="el" href="classTenSore_1_1Tensor.html" title="Mathematical tensor type.">Tensor</a>. It contains an index to which it points, and provides necessary operations for STL integration, as well as thread-safety. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1f0704ef816aa6d67c2d97e9565d961b" name="a1f0704ef816aa6d67c2d97e9565d961b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f0704ef816aa6d67c2d97e9565d961b">&#9670;&#160;</a></span>Iterator()</h2>
+<a id="a5478d3a6dd8a68727c93cf52ce42acaf" name="a5478d3a6dd8a68727c93cf52ce42acaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5478d3a6dd8a68727c93cf52ce42acaf">&#9670;&#160;</a></span>Iterator()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt; </div>
+template&lt;typename T , std::size_t Rank, Allocator A = std::allocator&lt;T&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Order, A &gt;::Iterator::Iterator </td>
+          <td class="memname"><a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Rank, A &gt;::Iterator::Iterator </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classTenSore_1_1Tensor.html">Tensor</a> *</td>          <td class="paramname"><span class="paramname"><em>p_Tensor</em></span>, </td>
         </tr>
@@ -244,19 +244,19 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac67a00a788543ea63d5feefedadc4077" name="ac67a00a788543ea63d5feefedadc4077"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac67a00a788543ea63d5feefedadc4077">&#9670;&#160;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+<a id="a3abcfac63d8147272abab93ccb69a855" name="a3abcfac63d8147272abab93ccb69a855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abcfac63d8147272abab93ccb69a855">&#9670;&#160;</a></span>operator*() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt; </div>
+template&lt;typename T , std::size_t Rank, Allocator A = std::allocator&lt;T&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">reference <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Order, A &gt;::Iterator::operator* </td>
+          <td class="memname">reference <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Rank, A &gt;::Iterator::operator* </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -274,19 +274,19 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
 
 </div>
 </div>
-<a id="a3d6326b134df5b2e9707e1ab3d0fbc24" name="a3d6326b134df5b2e9707e1ab3d0fbc24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d6326b134df5b2e9707e1ab3d0fbc24">&#9670;&#160;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+<a id="a7d28ffb6528c22667875681f17366fcc" name="a7d28ffb6528c22667875681f17366fcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d28ffb6528c22667875681f17366fcc">&#9670;&#160;</a></span>operator*() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt; </div>
+template&lt;typename T , std::size_t Rank, Allocator A = std::allocator&lt;T&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const T &amp; <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Order, A &gt;::Iterator::operator* </td>
+          <td class="memname">const T &amp; <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Rank, A &gt;::Iterator::operator* </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -304,19 +304,19 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
 
 </div>
 </div>
-<a id="a8cdcdbe16e91e36017aa0a640812141a" name="a8cdcdbe16e91e36017aa0a640812141a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cdcdbe16e91e36017aa0a640812141a">&#9670;&#160;</a></span>operator-&gt;() <span class="overload">[1/2]</span></h2>
+<a id="ac016beecdb9069f7a03ae837aaae64a1" name="ac016beecdb9069f7a03ae837aaae64a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac016beecdb9069f7a03ae837aaae64a1">&#9670;&#160;</a></span>operator-&gt;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt; </div>
+template&lt;typename T , std::size_t Rank, Allocator A = std::allocator&lt;T&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pointer <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Order, A &gt;::Iterator::operator-&gt; </td>
+          <td class="memname">pointer <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Rank, A &gt;::Iterator::operator-&gt; </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -334,19 +334,19 @@ template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt
 
 </div>
 </div>
-<a id="ae2f30768067cbf1e5a7b5a0da98d0a8f" name="ae2f30768067cbf1e5a7b5a0da98d0a8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2f30768067cbf1e5a7b5a0da98d0a8f">&#9670;&#160;</a></span>operator-&gt;() <span class="overload">[2/2]</span></h2>
+<a id="a18193eda923b949e8f02c8beadf06d43" name="a18193eda923b949e8f02c8beadf06d43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18193eda923b949e8f02c8beadf06d43">&#9670;&#160;</a></span>operator-&gt;() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T , std::size_t Order, Allocator A = std::allocator&lt;T&gt;&gt; </div>
+template&lt;typename T , std::size_t Rank, Allocator A = std::allocator&lt;T&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const pointer <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Order, A &gt;::Iterator::operator-&gt; </td>
+          <td class="memname">const pointer <a class="el" href="classTenSore_1_1Tensor.html">TenSore::Tensor</a>&lt; T, Rank, A &gt;::Iterator::operator-&gt; </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
