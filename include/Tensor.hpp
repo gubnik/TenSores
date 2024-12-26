@@ -20,7 +20,6 @@
 #include "AllocatorConcept.hpp"
 #include <array>
 #include <cstddef>
-#include <functional>
 #include <iterator>
 #include <memory>
 
@@ -45,7 +44,7 @@ namespace TenSore {
  * Iterators of this class are to be invalidated on any size change.
  */
 template<typename T, std::size_t Order, Allocator A = std::allocator<T>>
-class Tensor //: public std::enable_shared_from_this<Tensor<T, Order, A>>
+class Tensor
 {
 
 public:
@@ -91,7 +90,7 @@ public:
    */
   Tensor(const Tensor& p_Other)
   {
-    std::lock_guard<std::shared_mutex> lock(p_Other.mutex());
+    std::shared_lock<std::shared_mutex> lock(p_Other.mutex());
     m_DimensionsData = p_Other.m_DimensionsData;
     m_Data = p_Other.m_Data;
   }
@@ -103,7 +102,7 @@ public:
    */
   Tensor(Tensor&& p_Other) noexcept
   {
-    std::lock_guard<std::shared_mutex> lock(p_Other.mutex());
+    std::shared_lock<std::shared_mutex> lock(p_Other.mutex());
     m_DimensionsData = std::move(p_Other.m_DimensionsData);
     m_Data = std::move(p_Other.m_Data);
   }
@@ -115,7 +114,7 @@ public:
    */
   Tensor& operator=(const Tensor& p_Other)
   {
-    std::lock_guard<std::shared_mutex> lock(p_Other.mutex());
+    std::shared_lock<std::shared_mutex> lock(p_Other.mutex());
     m_DimensionsData = p_Other.m_DimensionsData;
     m_Data = p_Other.m_Data;
     return *this;
@@ -128,7 +127,7 @@ public:
    */
   Tensor& operator=(Tensor&& p_Other) noexcept
   {
-    std::lock_guard<std::shared_mutex> lock(p_Other.mutex());
+    std::shared_lock<std::shared_mutex> lock(p_Other.mutex());
     m_DimensionsData = std::move(p_Other.m_DimensionsData);
     m_Data = std::move(p_Other.m_Data);
     return *this;
@@ -144,7 +143,7 @@ public:
    */
   void invalidate_iterators() noexcept
   {
-    std::lock_guard<std::shared_mutex> lock(m_Mutex);
+    std::shared_lock<std::shared_mutex> lock(m_Mutex);
     m_Version++;
   }
 
@@ -226,7 +225,7 @@ public:
    */
   T& at(const std::array<std::size_t, Order>& dims)
   {
-    // std::lock_guard<std::shared_mutex> lock(mutex());
+    std::shared_lock<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
     return m_Data[index];
   }
@@ -240,7 +239,7 @@ public:
    */
   const T& at(const std::array<std::size_t, Order>& dims) const
   {
-    // std::lock_guard<std::shared_mutex> lock(mutex());
+    std::shared_lock<std::shared_mutex> lock(mutex());
     std::size_t index = calculateIndex(dims);
     return m_Data[index];
   }
@@ -259,7 +258,6 @@ public:
     static_assert(sizeof...(p_Dimensions) == Order,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    // std::lock_guard<std::shared_mutex> lock(mutex());
     const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
@@ -278,7 +276,6 @@ public:
     static_assert(sizeof...(p_Dimensions) == Order,
                   "Misaligned dimensions in tensor's `()` operator");
 
-    // std::lock_guard<std::shared_mutex> lock(mutex());
     const std::array<std::size_t, Order> _dims = { { p_Dimensions... } };
     return at(_dims);
   }
@@ -411,7 +408,7 @@ private:
    */
   std::size_t calculateIndex(const std::array<std::size_t, Order>& dims) const
   {
-    std::lock_guard<std::shared_mutex> lock(mutex());
+    std::shared_lock<std::shared_mutex> lock(mutex());
     std::size_t index = 0;
     std::size_t multiplier = 1;
     for (std::size_t i = 0; i < Order; ++i) {
@@ -477,7 +474,7 @@ public:
      * @brief Constructor of tensor
      *
      * @param p_Tensor Raw pointer to a tensor
-     * @param p_Idx Index of an element at which this iterator points
+     * @param p_Idx Index of an element to which this iterator points
      * @param p_Version Version of a tensor
      */
     Iterator(Tensor* p_Tensor, std::size_t p_Idx, std::size_t p_Version)
@@ -524,9 +521,9 @@ public:
     }
 
     /**
-     * @brief Pointer to the element at which the iterator is pointing to
+     * @brief Pointer to the element to which the iterator points
      *
-     * @return Pointer to the element at which the iterator is pointing to
+     * @return Pointer to the element to which the iterator points
      */
     pointer operator->()
     {
@@ -615,7 +612,14 @@ public:
     std::size_t m_Index;
     std::size_t m_Version;
   };
-
+  /**
+   * @brief Const iterator class of Tensor
+   *
+   * @details
+   * The ConstIterator class represents a const iterator of Tensor. It contains
+   * an index to which it points, and provides necessary operations
+   * for STL integration, as well as thread-safety.
+   */
   class ConstIterator
   {
   public:
@@ -631,7 +635,7 @@ public:
      * @brief Constructor of tensor
      *
      * @param p_Tensor Raw pointer to a tensor
-     * @param p_Idx Index of an element at which this iterator points
+     * @param p_Idx Index of an element to which this iterator points
      * @param p_Version Version of a tensor
      */
     ConstIterator(const Tensor* p_Tensor,
@@ -667,9 +671,9 @@ public:
     }
 
     /**
-     * @brief Pointer to the element at which the iterator is pointing to
+     * @brief Pointer to the element to which the iterator points
      *
-     * @return Pointer to the element at which the iterator is pointing to
+     * @return Pointer to the element to which the iterator points
      */
     pointer operator->() const
     {
